@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import torch
 
 a = np.array([3, -7, 11, -7, -4, 7], dtype="float64")
 p_star = len(a) -1
