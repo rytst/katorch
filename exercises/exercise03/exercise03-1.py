@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
-import torch.nn as nn
+from torch import nn
 from torchviz import make_dot
 
 a = np.array([3, -7, 11, -7, -4, 7], dtype="float64")
@@ -64,17 +64,17 @@ def main():
     model = Predictor(p_star)
     pred_y = model(train_X)
 
-    ##################
-    # Empirical Risk #
-    ##################
+    #################
+    # Loss Function #
+    #################
     loss = 0.5 * (pred_y - train_y) ** 2
-    raw_risk = torch.mean(loss)
+    loss = torch.mean(loss)
 
 
     #######################
     # Computational Graph #
     #######################
-    dot = make_dot(raw_risk, params=dict(model.named_parameters()))
+    dot = make_dot(loss, params=dict(model.named_parameters()))
     dot.render("computational_graph", format="png")
 
 
